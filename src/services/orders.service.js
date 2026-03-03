@@ -98,7 +98,7 @@ async function create({ userId, items}) {
 
         if (!product.active) throw new Error(`PRODUCT_NOT_FOUND`);
 
-        if (product.stock < item.quantity)throw new Error("INSUFFICIENT_STOCK");
+        if (product.stock < item.quantity)throw new Error(`INSUFFICIENT_STOCK`);
 
         total += product.price * item.quantity;
     }

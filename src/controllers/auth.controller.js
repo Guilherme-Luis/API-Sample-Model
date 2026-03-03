@@ -19,7 +19,7 @@ export async function register(req, res) {
         const result = await authService.register({ name: name.trim(), email: email.trim().toLowerCase(), password });
         return res.status(201).json(result);
     } catch (error) {
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -33,7 +33,7 @@ export async function login(req, res) {
         return res.json(result);
 
     } catch (error) {
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -50,7 +50,7 @@ export async function logout(req, res) {
         return res.json({ message: `Logout realizado com sucesso` });
 
     } catch (error) {
-        return res.status(500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 

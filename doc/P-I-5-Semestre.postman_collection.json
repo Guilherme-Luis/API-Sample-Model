@@ -38,7 +38,60 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"email\": \"guilherme2@gmail.com\",\r\n  \"password\": \"Mn@123456\"\r\n}",
+              "raw": "{\r\n  \"email\": \"usuario@gmail.com\",\r\n  \"password\": \"Mn@123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3003/development/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3003",
+              "path": [
+                "development",
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login-User-ADM",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "if (response.token) {\r",
+                  "    const token = response.token;\r",
+                  "\r",
+                  "    pm.collectionVariables.set(\"authTokenUser\", token);\r",
+                  "\r",
+                  "    const payload = JSON.parse(atob(token.split('.')[1]));\r",
+                  "    pm.collectionVariables.set(\"UserID\", payload.userId);\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"administrador@gmail.com\",\r\n  \"password\": \"Mn@123456\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -86,7 +139,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"name\": \"guilherme3\",\r\n  \"email\": \"guilherme3@gmail.com\",\r\n  \"password\": \"Mn@123456\"\r\n}",
+              "raw": "{\r\n  \"name\": \"usuario\",\r\n  \"email\": \"usuario@gmail.com\",\r\n  \"password\": \"Mn@123456\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -602,7 +655,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"items\": [\r\n    {\r\n      \"productId\": \"{{ProductID}}\",\r\n      \"quantity\": 1\r\n    }\r\n  ]\r\n}",
+              "raw": "{\r\n  \"items\": [\r\n    {\r\n      \"productId\": \"{{ProductID}}\",\r\n      \"quantity\": 10\r\n    }\r\n  ]\r\n}",
               "options": {
                 "raw": {
                   "language": "json"

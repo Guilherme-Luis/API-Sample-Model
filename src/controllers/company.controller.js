@@ -10,7 +10,7 @@ export async function list(req, res) {
         return res.json(companies);
     } catch (error) {
         //console.error(`Erro ao listar as empresas: `, error);
-        return res.status(500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -20,7 +20,7 @@ export async function getById(req, res) {
         return res.json(company);
     } catch (error) {
         //console.error(`Erro ao buscar a empresa: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -38,7 +38,7 @@ export async function create(req, res) {
         if (req.file) {
             const allowedTypes = [`image/jpeg`, `image/png`, `image/gif`, `image/jpg`];
             if (!allowedTypes.includes(req.file.mimetype)) {
-                return res.status(400).json({ error: `Tipo de arquivo inválido. Apenas imagens JPEG, PNG, JPG e GIF são permitidas.` });
+                return res.status(400).json({ message: `Tipo de arquivo inválido. Apenas imagens JPEG, PNG, JPG e GIF são permitidas.` });
             }
 
             const file = await filesService.upload({
@@ -58,7 +58,7 @@ export async function create(req, res) {
         return res.status(201).json({ message: `Empresa criada com sucesso: `, company });
     } catch (error) {
         //console.error(`Erro ao criar empresa: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -87,7 +87,7 @@ export async function update(req, res) {
         if (req.file) {
             const allowedTypes = [`image/jpeg`, `image/png`, `image/gif`, `image/jpg`];
             if (!allowedTypes.includes(req.file.mimetype)) {
-                return res.status(400).json({ error: `Tipo de arquivo inválido. Apenas imagens JPEG, PNG e GIF são permitidas.` });
+                return res.status(400).json({ message: `Tipo de arquivo inválido. Apenas imagens JPEG, PNG e GIF são permitidas.` });
             }
 
             const file = await filesService.upload({
@@ -104,7 +104,7 @@ export async function update(req, res) {
         return res.json({ message: `Empresa atualizada com sucesso: `, updated });
     } catch (error) {
         //console.error(`Erro ao atualizar a empresa: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -114,7 +114,7 @@ export async function deleteCompany(req, res) {
         return res.status(204).send();
     } catch (error) {
         //console.error(`Erro ao tentar excluir a empresa: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 

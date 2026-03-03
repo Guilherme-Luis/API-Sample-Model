@@ -49,7 +49,9 @@ async function getById({ id }) {
     });
 
     if (!file) {
-        throw new Error(`Arquivo não encontrado`);
+        const error = new Error(`Arquivo não encontrado`);
+        error.status = 404;
+        throw error;
     }
 
     return file;
@@ -61,7 +63,9 @@ async function deleteFiles({ id }) {
     });
 
     if (!file) {
-        throw new Error(`Arquivo não encontrado`);
+        const error = new Error(`Arquivo não encontrado`);
+        error.status = 404;
+        throw error;
     }
 
     if (fs.existsSync(file.path)) {
@@ -80,13 +84,17 @@ async function download({ id }) {
         });
 
         if (!file) {
-            throw new Error( `Arquivo não encontrado` );
+            const error = new Error(`Arquivo não encontrado`);
+            error.status = 404;
+            throw error;
         }
 
         const filePath = path.resolve(file.path);
 
         if (!fs.existsSync(filePath)) {
-            throw new Error( `Arquivo físico não encontrado` );
+            const error = new Error(`Arquivo físico não encontrado`);
+            error.status = 404;
+            throw error;
         }
         
         return { path: filePath, originalName: file.originalName };

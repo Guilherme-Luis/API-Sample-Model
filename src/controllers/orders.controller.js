@@ -14,7 +14,7 @@ export async function cancel(req, res) {
         if (error.message === `FORBIDDEN`) return res.status(403).json({ message: `Acesso negado` });
         if(error.message === `INVALID_STATUS`) return res.status(400).json({ message: `Apenas pedidos pendentes podem ser cancelados` });
 
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -33,7 +33,7 @@ export async function updateStatus(req, res) {
         if (error.message === `NOT_FOUND`) return res.status(404).json({ message: `Pedido não encontrado` });
         if(error.message === `INVALID_STATUS`) return res.status(400).json({ message: `Status inválido` });
         
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -44,7 +44,7 @@ export async function summary(req, res) {
         return res.json(result);
     } catch (error) {
         //console.error(`Erro ao obter resumo de pedidos: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
     
 }
@@ -67,7 +67,7 @@ export async function create(req, res) {
         if (error.message === `PRODUCT_NOT_FOUND`) return res.status(400).json({ message: `Produto Inválido` });
         if (error.message === `INSUFFICIENT_STOCK`) return res.status(400).json({ message: `Estoque insuficiente` });
 
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 

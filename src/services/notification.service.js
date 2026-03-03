@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 });
 
 async function list({ userId }) {
-    const [ notifications, totalCount ] = await Promise.all([
+    const [notifications, totalCount] = await Promise.all([
         prisma.notification.findMany({
             where: { userId },
             orderBy: { createdAt: `desc` }
@@ -95,27 +95,24 @@ async function deleteNotification({ id, userId }) {
 }
 
 async function sendEmail({ userId, title, message }) {
-    try {
-        const user = await prisma.user.findUnique({
-            where: { id: userId },
-            select: { email: true }
-        });
+    const user = await prisma.user.findUnique({
+        where: { id: userId },
+        select: { email: true }
+    });
 
-        if (!user || !user.email) {
-            throw new Error(`Usuário não encontrado ou sem e-mail cadastrado`);
-        }
-
-        return transporter.sendMail({
-            from: `"Empresa XXX" <${SMTP_USER}>`,
-            to: user.email,
-            subject: title,
-            text: message,
-            html: `<p>${message}</p>`
-        });
-    } catch (error) {
-        console.error(`Erro ao enviar e-mail: `, error);
+    if (!user || !user.email) {
+        const error = new Error(`Usuário não encontrado ou sem e-mail cadastrado`);
+        error.status = 404;
         throw error;
     }
+
+    return transporter.sendMail({
+        from: `"Empresa XXX" <${SMTP_USER}>`,
+        to: user.email,
+        subject: title,
+        text: message,
+        html: `<p>${message}</p>`
+    });
 }
 
 export default {

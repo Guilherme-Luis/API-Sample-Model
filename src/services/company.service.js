@@ -78,7 +78,9 @@ async function deleteCompany({ id }) {
     });
 
     if (!company || !company.active) {
-        throw new Error(`Empresa não encontrada ou não está ativa`);
+        const error = new Error(`Empresa não encontrada ou não está ativa`);
+        error.status = 404;
+        throw error;
     }
 
     await prisma.company.update({

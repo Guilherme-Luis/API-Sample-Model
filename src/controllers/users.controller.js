@@ -10,7 +10,7 @@ async function list(req, res) {
 
     } catch (error) {
         //console.error(`Erro ao listar usuários: ${error.message}`);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -24,7 +24,7 @@ async function getById(req, res) {
 
     } catch (error) {
         //console.error(`Erro ao buscar usuário: ${error.message}`);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -50,7 +50,7 @@ async function update(req, res) {
         return res.json(updated);
     } catch (error) {
         //console.error(`Erro ao atualizar usuário: ${error.message}`);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -64,7 +64,7 @@ async function deleteUser(req, res) {
 
     } catch (error) {
         //console.error(`Erro ao deletar usuário: ${error.message}`);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -84,7 +84,7 @@ async function changeRole(req, res) {
         if (error.message === `INVALID_ROLE`) return res.status(400).json({ message: `Usuário não possui permissão` });
         
         //console.error(`Erro ao alterar role do usuário: ${error.message}`);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 

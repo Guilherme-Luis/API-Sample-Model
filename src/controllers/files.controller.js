@@ -17,7 +17,7 @@ export async function upload(req, res) {
         return res.status(201).json({ message: `Arquivo enviado com sucesso`, file });
     } catch (error) {
         //console.error(`Erro ao enviar arquivo: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -28,7 +28,7 @@ export async function list(req, res) {
 
     } catch (error) {
         //console.error(`Erro ao listar arquivos: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -39,7 +39,7 @@ export async function getById(req, res) {
 
     } catch (error) {
         //console.error(`Arquivo não encontrado: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -51,7 +51,7 @@ export async function deleteFiles(req, res) {
 
     } catch (error) {
         //console.error(`Erro ao deletar arquivo: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -62,7 +62,7 @@ export async function download(req, res) {
         
     } catch (error) {
         //console.error(`Erro ao baixar arquivo: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 

@@ -9,7 +9,7 @@ export async function list(req, res) {
         return res.json(result);
     } catch (error) {
         //console.error(`Erro ao listar notificações: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -32,7 +32,7 @@ export async function create(req, res) {
         return res.status(201).json(result);
     } catch (error) {
         //console.error(`Erro ao criar notificação: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -45,7 +45,7 @@ export async function markAsRead(req, res) {
         return res.json({ message: `Notificação marcada como lida` });
     } catch (error) {
         //console.error(`Erro ao marcar notificação como lida: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -79,7 +79,7 @@ export async function update(req, res) {
         return res.json({ message: `Notificação atualizada com sucesso`, notification });
     } catch (error) {
         //console.error(`Erro ao atualizar notificação: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
@@ -94,7 +94,7 @@ export async function deleteNotification(req, res) {
         return res.json({ message: `Notificação excluída com sucesso!` });
     } catch (error) {
         //console.error(`Erro ao excluir notificação: `, error);
-        return res.status(error.status || 500).json({ message: `Erro interno do servidor: ${error.message}` });
+        return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
 
