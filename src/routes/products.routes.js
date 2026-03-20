@@ -69,7 +69,8 @@ const upload = multer(uploadConfig);
  *       500:
  *         description: Erro interno do servidor
  */
-router.get(`/`, auth, checkBlacklist, productsController.list);
+router.get(`/`, productsController.list);
+//router.get(`/`, auth, checkBlacklist, productsController.list);
 
 /**
  * @swagger
@@ -136,7 +137,8 @@ router.get(`/`, auth, checkBlacklist, productsController.list);
  *       404:
  *         description: Produto não encontrado
  */
-router.get(`/:id`, auth, checkBlacklist, productsController.getById);
+router.get(`/:id`, productsController.getById);
+//router.get(`/:id`, auth, checkBlacklist, productsController.getById);
 
 /**
  * @swagger
