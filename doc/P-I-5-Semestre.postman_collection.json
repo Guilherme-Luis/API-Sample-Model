@@ -139,7 +139,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"name\": \"usuario\",\r\n  \"email\": \"usuario@gmail.com\",\r\n  \"password\": \"Mn@123456\"\r\n}",
+              "raw": "{\r\n  \"name\": \"usuario123\",\r\n  \"email\": \"usuario@gmail.com\",\r\n  \"password\": \"Mn@123456\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -229,13 +229,13 @@
               "formdata": [
                 {
                   "key": "name",
-                  "value": "teste",
+                  "value": "12345",
                   "type": "text",
                   "uuid": "21ec783e-f14c-483f-bc8e-306f93b88167"
                 },
                 {
                   "key": "cnpj",
-                  "value": "43.510.952/0001-68",
+                  "value": "56.507.472/0001-90",
                   "type": "text",
                   "uuid": "a5419b75-b771-4892-97da-edca16d0713a"
                 },
@@ -255,7 +255,7 @@
                   "key": "image",
                   "type": "file",
                   "uuid": "86990459-0529-4a14-b6b0-f9421f656d4b",
-                  "src": "/C:/Users/Ecenture/Desktop/Arquivos Testes/PDFs/TestePDF.pdf"
+                  "src": "/C:/Users/Ecenture/Desktop/Arquivos Testes/Logo/200-200-2.jpg"
                 }
               ]
             },
@@ -785,8 +785,8 @@
                 "exec": [
                   "let response = pm.response.json();\r",
                   "\r",
-                  "if (response.id) {\r",
-                  "    pm.collectionVariables.set(\"ProductID\", response.id);\r",
+                  "if (response.product) {\r",
+                  "    pm.collectionVariables.set(\"ProductID\", response.product.id);\r",
                   "}"
                 ],
                 "type": "text/javascript",
@@ -809,13 +809,13 @@
               "formdata": [
                 {
                   "key": "name",
-                  "value": "teste",
+                  "value": "banana",
                   "type": "text",
                   "uuid": "1b57d079-6ea0-41ac-afba-e7d3c0af2694"
                 },
                 {
                   "key": "description",
-                  "value": "teste",
+                  "value": "banana amarela",
                   "type": "text",
                   "uuid": "55191896-c7d4-4c0b-80ba-e68f1ff88334"
                 },
@@ -835,7 +835,7 @@
                   "key": "image",
                   "type": "file",
                   "uuid": "8a81f9dd-0a97-499d-bb3b-7b1f1587d852",
-                  "src": "/C:/Users/Ecenture/Desktop/Arquivos Testes/Logo/200-200-1.jpg"
+                  "src": "/C:/Users/Ecenture/Desktop/Arquivos Testes/Logo/200-200-2.jpg"
                 }
               ]
             },
