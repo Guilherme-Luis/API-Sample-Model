@@ -1,10 +1,10 @@
-import express from "express";
 import dotenv from "dotenv";
+dotenv.config();
+
+import express from "express";
 import { connectDB } from "./config/db.js";
 import { swaggerDocs } from "./config/swagger.js";
 import routes from "./routes/index.js";
-
-dotenv.config();
 
 const app = express();
 const { PORT, NODE_ENV } = process.env;
