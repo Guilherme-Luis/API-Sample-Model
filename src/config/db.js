@@ -5,9 +5,7 @@ export const prisma = new PrismaClient();
 export async function connectDB() {
     const { DB_URL } = process.env;
 
-    if (!DB_URL) {
-        throw new Error("DB_URL is not defined in environment variables");
-    }
+    if (!DB_URL) throw new Error("DB_URL is not defined in environment variables");
 
     try {
         await prisma.$connect();
