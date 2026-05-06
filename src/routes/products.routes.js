@@ -1,5 +1,6 @@
 import { Router } from "express";
 import auth from "../middleware/auth.js";
+import isAdmin from "../middleware/Admin.js";
 import checkBlacklist from "../middleware/checkBlacklist.js";
 import productsController from "../controllers/products.controller.js";
 import multer from "multer";
@@ -211,7 +212,7 @@ router.get(`/:id`, productsController.getById);
  *       500:
  *         description: Erro interno do servidor
  */
-router.post(`/`, auth, checkBlacklist, upload.single(`image`), productsController.create);
+router.post(`/`, auth, checkBlacklist, isAdmin, upload.single(`image`), productsController.create);
 
 /**
  * @swagger
@@ -285,7 +286,7 @@ router.post(`/`, auth, checkBlacklist, upload.single(`image`), productsControlle
  *       500:
  *         description: Erro interno do servidor
  */
-router.put(`/:id`, auth, checkBlacklist, upload.single(`image`), productsController.update);
+router.put(`/:id`, auth, checkBlacklist, isAdmin, upload.single(`image`), productsController.update);
 
 /**
  * @swagger
@@ -322,6 +323,6 @@ router.put(`/:id`, auth, checkBlacklist, upload.single(`image`), productsControl
  *       500:
  *         description: Erro interno do servidor
  */
-router.patch(`/:id/toggle`, auth, checkBlacklist, productsController.toggleActive);
+router.patch(`/:id/toggle`, auth, checkBlacklist, isAdmin, productsController.toggleActive);
 
 export default router;

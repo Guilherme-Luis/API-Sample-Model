@@ -180,6 +180,6 @@ router.delete(`/:id`, auth, checkBlacklist, filesController.deleteFiles);
  *       404:
  *         description: Arquivo não encontrado
  */
-router.get(`/:id/download`, auth, checkBlacklist, filesController.download);
+router.get(`/:id/download`, filesController.download);
 
 export default router

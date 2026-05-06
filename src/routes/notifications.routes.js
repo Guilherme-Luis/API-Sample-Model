@@ -2,6 +2,7 @@ import { Router } from "express";
 import auth from "../middleware/auth.js";
 import checkBlacklist from "../middleware/checkBlacklist.js";
 import notificationsController from "../controllers/notifications.controller.js";
+import isAdmin from "../middleware/Admin.js";
 
 const router = Router();
 
@@ -72,7 +73,7 @@ router.get(`/`, auth, checkBlacklist, notificationsController.list);
  *       401:
  *         description: Não autorizado
  */
-router.post(`/`, auth, checkBlacklist, notificationsController.create);
+router.post(`/`, auth, checkBlacklist, isAdmin, notificationsController.create);
 
 /**
  * @swagger
@@ -138,7 +139,7 @@ router.patch(`/:id`, auth, checkBlacklist, notificationsController.markAsRead);
  *       404:
  *         description: Notificação não encontrada
  */
-router.put(`/:id`, auth, checkBlacklist, notificationsController.update);
+router.put(`/:id`, auth, checkBlacklist, isAdmin, notificationsController.update);
 
 /**
  * @swagger
@@ -163,6 +164,6 @@ router.put(`/:id`, auth, checkBlacklist, notificationsController.update);
  *       401:
  *         description: Não autorizado
  */
-router.delete(`/:id`, auth, checkBlacklist, notificationsController.deleteNotification);
+router.delete(`/:id`, auth, checkBlacklist, isAdmin, notificationsController.deleteNotification);
 
 export default router;

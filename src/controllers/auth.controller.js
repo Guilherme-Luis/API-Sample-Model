@@ -33,6 +33,11 @@ export async function login(req, res) {
         return res.json(result);
 
     } catch (error) {
+        console.error('💥 LOGIN ERRO TOTAL:', {
+            message: error.message,
+            stack: error.stack,
+            status: error.status
+        });
         return res.status(error.status || 500).json({ message: error.status ? error.message: `Erro interno do servidor` });
     }
 }
