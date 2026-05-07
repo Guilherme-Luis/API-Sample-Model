@@ -7,14 +7,10 @@ import { swaggerDocs } from "./config/swagger.js";
 const app = express();
 const { NODE_ENV } = process.env;
 
+//É errado, mas fazer o que né?
 app.use(cors({
-    origin: [
-        'http://localhost:5173',
-        'https://frontend-sample-model.vercel.app'
-    ],
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+  origin: true,
+  credentials: true
 }));
 
 app.use(express.json());
