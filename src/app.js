@@ -9,9 +9,15 @@ const { NODE_ENV } = process.env;
 
 app.use(cors({
     origin: [
+        'http://localhost:5173',
         'https://frontend-sample-model.vercel.app'
-    ], credentials: true
+    ],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 }));
+
+app.options('*', cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
