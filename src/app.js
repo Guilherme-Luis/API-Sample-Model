@@ -7,7 +7,11 @@ import { swaggerDocs } from "./config/swagger.js";
 const app = express();
 const { NODE_ENV } = process.env;
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        'https://frontend-sample-model.vercel.app'
+    ], credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
