@@ -1,25 +1,48 @@
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import routes from "./routes/index.js";
 import { swaggerDocs } from "./config/swagger.js";
 
-
 const app = express();
-const { NODE_ENV } = process.env;
+const NODE_ENV = process.env.NODE_ENV;
 
-app.use(cors({
-    origin: 'https://frontend-sample-model.vercel.app',
-    credentials: true
-}));
+const defaultAllowedOrigins = [
+    "https://frontend-sample-model.vercel.app",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:4173",
+    "http://127.0.0.1:4173",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+];
 
-app.options(/(.*)/, (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://frontend-sample-model.vercel.app');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', 'true');
+const envAllowedOrigins = [
+    process.env.FRONTEND_URL,
+    process.env.CORS_ORIGINS,
+]
+    .filter(Boolean)
+    .flatMap((value) => value.split(","))
+    .map((value) => value.trim().replace(/\/+$/, ""))
+    .filter(Boolean);
 
-    return res.sendStatus(200);
-});
+const allowedOrigins = new Set([...defaultAllowedOrigins, ...envAllowedOrigins]);
+
+const corsOptions = {
+    origin(origin, callback) {
+        if (!origin || allowedOrigins.has(origin.replace(/\/+$/, ""))) {
+            return callback(null, true);
+        }
+        return callback(null, false);
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+app.options(/.*/, cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -1,4 +1,3 @@
-import e from "cors";
 import authService from "../services/auth.service.js";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
