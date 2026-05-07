@@ -359,26 +359,6 @@ Todas as rotas protegidas requerem o header:
 Authorization: Bearer <seu_token_jwt_aqui>
 ```
 
-**Exemplo com curl:**
-```bash
-curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." \
-  http://localhost:3000/api/users/profile
-```
-
-**Exemplo com JavaScript (fetch):**
-```javascript
-const token = localStorage.getItem('token');
-
-fetch('http://localhost:3000/api/users/profile', {
-  headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json'
-  }
-})
-.then(res => res.json())
-.then(data => console.log(data));
-```
-
 ### Rotas de Autenticação
 
 ```
