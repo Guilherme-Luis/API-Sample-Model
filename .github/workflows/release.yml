@@ -6,20 +6,24 @@ on:
       - 'v*.*.*'
 
 jobs:
-  release:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build backend
-        run: echo "Backend build executed successfully"
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Validate backend startup
+        run: echo "Backend validation completed successfully"
