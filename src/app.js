@@ -7,15 +7,6 @@ import { swaggerDocs } from "./config/swagger.js";
 const app = express();
 const { NODE_ENV } = process.env;
 
-app.options('*', (req, res) => {
-    res.header('Access-Control-Allow-Origin', 'https://frontend-sample-model.vercel.app');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.header('Access-Control-Allow-Credentials', 'true');
-
-    return res.sendStatus(200);
-});
-//É errado, mas fazer o que né?
 app.use(cors({
     origin: 'https://frontend-sample-model.vercel.app',
     credentials: true
