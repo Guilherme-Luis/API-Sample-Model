@@ -12,7 +12,7 @@ COPY uploads ./uploads
 
 ENV NODE_ENV=production
 ENV PORT=5000
-ENV API_VERSION=1.1.0
+ENV API_VERSION=1.1.5
 
 EXPOSE 5000
 

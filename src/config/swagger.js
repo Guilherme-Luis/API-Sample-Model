@@ -2,7 +2,7 @@ import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 
 export const swaggerDocs = (app) => {
-    const API_VERSION = process.env.API_VERSION || "1.1.0";
+    const API_VERSION = process.env.API_VERSION || "1.1.5";
     const NODE_ENV = process.env.NODE_ENV || "development";
     const PORT = process.env.PORT || 5000;
 
