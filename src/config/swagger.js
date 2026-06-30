@@ -2,9 +2,11 @@ import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 
 export const swaggerDocs = (app) => {
-    const API_VERSION = process.env.API_VERSION || "1.1.5";
-    const NODE_ENV = process.env.NODE_ENV || "development";
-    const PORT = process.env.PORT || 5000;
+    const { API_VERSION, NODE_ENV, PORT } = process.env;
+
+    if (!API_VERSION || !NODE_ENV || !PORT) {
+        throw new Error(`Variable is not defined in environment variables`);
+    }
 
     const options = {
         definition: {

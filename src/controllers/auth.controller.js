@@ -1,3 +1,4 @@
+import e from "cors";
 import authService from "../services/auth.service.js";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -5,7 +6,7 @@ const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&]).{6,20}$/;
 
 export async function register(req, res) {
     try {
-        const { name, email, password } = req.body ?? {};
+        const { name, email, password } = req.body;
 
         if (!name) return res.status(400).json({ message: `Nome é obrigatório` });
         if (!email) return res.status(400).json({ message: `Email é obrigatório` });
@@ -24,7 +25,7 @@ export async function register(req, res) {
 
 export async function login(req, res) {
     try {
-        const { email, password } = req.body ?? {};
+        const { email, password } = req.body;
         if (!email || !password) return res.status(400).json({ message: `Email e senha são obrigatórios` });
         if (password.length < 6) return res.status(400).json({ message: `Senha deve ter no mínimo 6 caracteres` });
 

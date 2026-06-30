@@ -1,11 +1,9 @@
 import { Router } from "express";
-import multer from "multer";
 import auth from "../middleware/auth.js";
 import checkBlacklist from "../middleware/checkBlacklist.js";
 import authController from "../controllers/auth.controller.js";
 
 const router = Router();
-const parseFormFields = multer().none();
 // Define your order routes here
 
 /**
@@ -35,7 +33,7 @@ const parseFormFields = multer().none();
  *       201:
  *         description: User registered
  */
-router.post('/register', parseFormFields, authController.register);
+router.post('/register', authController.register);
 
 /**
  * @swagger
@@ -61,7 +59,7 @@ router.post('/register', parseFormFields, authController.register);
  *       200:
  *         description: Login successful
  */
-router.post(`/login`, parseFormFields, authController.login);
+router.post(`/login`, authController.login);
 
 /**
  * @swagger
