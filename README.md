@@ -25,17 +25,17 @@ Esta é uma API de serviços robusta desenvolvida para gerenciar diversas funcio
 
 ### Principais Características
 
--  **Autenticação JWT** - Segurança com tokens JWT e refresh tokens
--  **Controle de Acesso** - Middleware Admin para rotas protegidas
--  **Gerenciamento de Empresas** - CRUD completo com validações
--  **Catálogo de Produtos** - Produtos associados a empresas
--  **Sistema de Pedidos** - Rastreamento completo de pedidos
--  **Upload de Arquivos** - Com validação de documento
--  **Notificações por Email** - Sistema integrado com Nodemailer
--  **API Documentada** - Swagger UI para exploração interativa
--  **ORM Moderno** - Prisma e Mongoose para flexibilidade
+- **Autenticação JWT** - Segurança com tokens JWT e refresh tokens
+- **Controle de Acesso** - Middleware Admin para rotas protegidas
+- **Gerenciamento de Empresas** - CRUD completo com validações
+- **Catálogo de Produtos** - Produtos associados a empresas
+- **Sistema de Pedidos** - Rastreamento completo de pedidos
+- **Upload de Arquivos** - Com validação de documento
+- **Notificações por Email** - Sistema integrado com Nodemailer
+- **API Documentada** - Swagger UI para exploração interativa
+- **ORM Moderno** - Prisma e Mongoose para flexibilidade
 
-##  Componentes e Funcionalidades
+## Componentes e Funcionalidades
 
 ### Módulos Principais
 
@@ -52,15 +52,15 @@ Esta é uma API de serviços robusta desenvolvida para gerenciar diversas funcio
 
 ### Funcionalidades de Segurança
 
--  **Autenticação JWT** - Tokens com expiração configurável
--  **Hash de Senhas** - Bcryptjs com salt automático
--  **Lista Negra de Tokens** - Revogação de tokens em logout
--  **Middleware de Autenticação** - Proteção de rotas
--  **Verificação de Admin** - Controle de acesso granular
--  **Validação de Documentos** - Documentador customizado
--  **CORS Configurado** - Requisições cross-origin seguras
+- **Autenticação JWT** - Tokens com expiração configurável
+- **Hash de Senhas** - Bcryptjs com salt automático
+- **Lista Negra de Tokens** - Revogação de tokens em logout
+- **Middleware de Autenticação** - Proteção de rotas
+- **Verificação de Admin** - Controle de acesso granular
+- **Validação de Documentos** - Documentador customizado
+- **CORS Configurado** - Requisições cross-origin seguras
 
-##  Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 ### Runtime & Framework
 - **Node.js** `v18.0.0+` - Plataforma de execução JavaScript
@@ -95,16 +95,16 @@ Esta é uma API de serviços robusta desenvolvida para gerenciar diversas funcio
 ### Desenvolvimento
 - **nodemon** `v3.1.11` - Auto-reload durante desenvolvimento
 
-##  Pré-requisitos
+## Pré-requisitos
 
 Antes de começar, certifique-se de ter:
 
 ```
-✓ Node.js 18.0.0 ou superior
-✓ npm (v9+) ou yarn (v1.22+)
-✓ MongoDB (local ou instância remota)
-✓ Editor de código (VS Code recomendado)
-✓ Git para versionamento
+- Node.js 18.0.0 ou superior
+- npm (v9+) ou yarn (v1.22+)
+- MongoDB (local ou instância remota)
+- Editor de código (VS Code recomendado)
+- Git para versionamento
 ```
 
 **Verificar versões instaladas:**
@@ -167,7 +167,7 @@ yarn prisma:push
 
 Pronto! A aplicação está configurada.
 
-##  Configuração
+## Configuração
 
 ### Arquivo `.env`
 
@@ -245,7 +245,7 @@ npm run dev
 # API Docs disponível em: http://localhost:3000/api-docs
 ```
 
-## 📂 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 API-Sample-Model/
@@ -317,11 +317,11 @@ http://localhost:3000/api-docs
 ```
 
 A interface Swagger permite:
-- ✓ Visualizar todos os endpoints
-- ✓ Testar requisições diretamente
-- ✓ Ver exemplos de request/response
-- ✓ Verificar códigos de status HTTP
-- ✓ Explorar parâmetros e validações
+- Visualizar todos os endpoints
+- Testar requisições diretamente
+- Ver exemplos de request/response
+- Verificar códigos de status HTTP
+- Explorar parâmetros e validações
 
 ### Coleção Postman
 
@@ -411,9 +411,9 @@ curl -X POST \
 ### Validação de Documento
 
 O arquivo `src/utils/documentValidator.js` valida:
-- ✓ Tipo de arquivo (extensão permitida)
-- ✓ Tamanho do arquivo
-- ✓ Conteúdo do arquivo
+- Tipo de arquivo (extensão permitida)
+- Tamanho do arquivo
+- Conteúdo do arquivo
 
 ### Diretórios de Upload
 
@@ -459,33 +459,33 @@ Implementar templates de email em `src/services/notification.service.js` para:
 - Recuperação de senha
 - Notificações gerais
 
-##  Boas Práticas
+## Boas Práticas
 
 ### Segurança
 
-- ✓ Nunca commitar `.env` com dados sensíveis
-- ✓ Usar HTTPS em produção
-- ✓ Validar todas as entradas de usuário
-- ✓ Implementar rate limiting para login
-- ✓ Usar CORS restritivo em produção
-- ✓ Hash de senhas com Bcrypt (nunca plaintext)
+- Nunca commitar `.env` com dados sensíveis
+- Usar HTTPS em produção
+- Validar todas as entradas de usuário
+- Implementar rate limiting para login
+- Usar CORS restritivo em produção
+- Hash de senhas com Bcrypt (nunca plaintext)
 
 ### Performance
 
-- ✓ Usar índices no MongoDB para queries frequentes
-- ✓ Cache de dados com Redis (opcional)
-- ✓ Paginação para listagens grandes
-- ✓ Lazy loading de relacionamentos
-- ✓ Compressão de resposta (gzip)
+- Usar índices no MongoDB para queries frequentes
+- Cache de dados com Redis (opcional)
+- Paginação para listagens grandes
+- Lazy loading de relacionamentos
+- Compressão de resposta (gzip)
 
 ### Código
 
-- ✓ Separar lógica (controllers → services)
-- ✓ Validar dados de entrada
-- ✓ Tratamento consistente de erros
-- ✓ Comentários em lógica complexa
-- ✓ Use async/await em vez de callbacks
-- ✓ Nomes significativos para variáveis
+- Separar lógica (controllers → services)
+- Validar dados de entrada
+- Tratamento consistente de erros
+- Comentários em lógica complexa
+- Use async/await em vez de callbacks
+- Nomes significativos para variáveis
 
 ### Testes
 
@@ -497,7 +497,7 @@ npm test
 npm run test:coverage
 ```
 
-##  Troubleshooting
+## Troubleshooting
 
 ### Banco de Dados
 
